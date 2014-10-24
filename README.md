@@ -3,7 +3,27 @@ Windows-API-Code-Pack-1.1
 
 Windows API Code Pack 1.1
 
-**Notes:**
+NuGet packages (recommended)
+----------------------------
+
+https://www.nuget.org/packages/WindowsAPICodePack-Core/
+https://www.nuget.org/packages/WindowsAPICodePack-Shell/
+https://www.nuget.org/packages/WindowsAPICodePack-ShellExtensions/
+https://www.nuget.org/packages/WindowsAPICodePack-DirectX/
+https://www.nuget.org/packages/WindowsAPICodePack-ExtendedLinguisticServices/
+https://www.nuget.org/packages/WindowsAPICodePack-Sensors/
+
+Release notes
+-------------
+
+- availability of the documentation through IntelliSense
+- availability of the DirectX package
+- bug fix for `TaskDialog` icon not shown unless defined in `Opened` event (x86/x64)
+
+Usage notes
+-----------
+
+**TaskDialog**
 
 If you get the following exception when you instantiate a `TaskDialog`:
 
@@ -30,8 +50,6 @@ To fix it, create an application manifest and uncomment the following block sect
     </dependentAssembly>
   </dependency>-->
 ```
-**TODO:**
+**DirectX**
 
-Provide NuGet packages for DirectX assemblies.
-
-
+The DirectX package will work under x86 and x64 configuration platforms but not for AnyCPU platform (because there is no such platform for C++/CLI projects). Consequently, the package will purposefully fail the build and tell you why it did.
