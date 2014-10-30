@@ -7,6 +7,6 @@ nuget pack WindowsAPICodePack-ExtendedLinguisticServices.nuspec -NoPackageAnalys
 nuget pack WindowsAPICodePack-Sensors.nuspec -NoPackageAnalysis
 nuget pack WindowsAPICodePack-Shell.nuspec -NoPackageAnalysis
 nuget pack WindowsAPICodePack-ShellExtensions.nuspec -NoPackageAnalysis
+copy WindowsAPICodePack-DirectX.readme readme.txt
 nuget pack WindowsAPICodePack-DirectX.nuspec -NoPackageAnalysis
-REM nuget pack WindowsAPICodePack-DirectX.1.1-x64.nuspec -NoPackageAnalysis
-REM nuget pack WindowsAPICodePack-DirectX.1.1-x86.nuspec -NoPackageAnalysis
+del readme.txt
