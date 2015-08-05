@@ -71,24 +71,18 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
         [StructLayout(LayoutKind.Explicit, CharSet = CharSet.Auto)]
         internal struct IconUnion
         {
-            internal IconUnion(int i)
+			internal IconUnion(IntPtr i)
             {
                 mainIcon = i;
-                spacer = IntPtr.Zero;
             }
 
-            [FieldOffset(0)]
-            private int mainIcon;
-
-            // This field is used to adjust the length of the structure on 32/64bit OS.
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-            [FieldOffset(0)]
-            private IntPtr spacer;
+			[FieldOffset(0)]
+			private IntPtr mainIcon;
 
             /// <summary>
             /// Gets the handle to the Icon
             /// </summary>
-            public int MainIcon { get { return mainIcon; } }
+			public IntPtr MainIcon { get { return mainIcon; } }
         }
 
         // NOTE: Packing must be set to 4 to make this work on 64-bit platforms.

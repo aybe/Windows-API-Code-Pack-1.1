@@ -607,8 +607,8 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             }
 
             // Other miscellaneous sets.
-            dialogConfig.mainIcon = new TaskDialogNativeMethods.IconUnion((int)icon);
-            dialogConfig.footerIcon = new TaskDialogNativeMethods.IconUnion((int)footerIcon);
+            dialogConfig.mainIcon = new TaskDialogNativeMethods.IconUnion((IntPtr)icon);
+			dialogConfig.footerIcon = new TaskDialogNativeMethods.IconUnion((IntPtr)footerIcon);
             dialogConfig.commonButtons = (TaskDialogNativeMethods.TaskDialogCommonButtons)standardButtons;
         }
 

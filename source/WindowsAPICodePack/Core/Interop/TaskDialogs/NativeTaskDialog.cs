@@ -521,21 +521,21 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             }
         }
 
-        private static IntPtr AllocateAndMarshalButtons(TaskDialogNativeMethods.TaskDialogButton[] structs)
-        {
-            IntPtr initialPtr = Marshal.AllocHGlobal(
-                Marshal.SizeOf(typeof(TaskDialogNativeMethods.TaskDialogButton)) * structs.Length);
+		private static IntPtr AllocateAndMarshalButtons(TaskDialogNativeMethods.TaskDialogButton[] buttons)
+		{
+			var buttonType = typeof(TaskDialogNativeMethods.TaskDialogButton);
+			var buttonTypeSize = Marshal.SizeOf(buttonType);
 
-            IntPtr currentPtr = initialPtr;
-            bool is64Bit = Marshal.SizeOf(typeof (IntPtr)) == 8;
-            foreach (TaskDialogNativeMethods.TaskDialogButton button in structs)
-            {
-                Marshal.StructureToPtr(button, currentPtr, false);
-                currentPtr = (IntPtr)(is64Bit ? currentPtr.ToInt64() : currentPtr.ToInt32() + Marshal.SizeOf(button));
-            }
+			IntPtr result = Marshal.AllocHGlobal(buttonTypeSize * buttons.Length);
 
-            return initialPtr;
-        }
+			for (int index = 0; index < buttons.Length; index++)
+			{
+				var button = buttons[index];
+				var tmp = (IntPtr)(result.ToInt64() + buttonTypeSize * index);
+				Marshal.StructureToPtr(button, tmp, false);
+			}
+			return result;
+		}
 
         #endregion
 
