@@ -273,7 +273,11 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
                 return outerDialog.RaiseClosingEvent(id);
             }
 
-            return (int)HResult.False;
+            // https://msdn.microsoft.com/en-us/library/windows/desktop/bb760542(v=vs.85).aspx
+            // The return value is specific to the notification being processed.
+            // When responding to a button click, your implementation should return S_FALSE
+            // if the Task Dialog is not to close. Otherwise return S_OK.
+            return ShowState == DialogShowState.Closing ? (int)HResult.Ok : (int)HResult.False;
         }
 
         private int HandleRadioButtonClick(int id)
