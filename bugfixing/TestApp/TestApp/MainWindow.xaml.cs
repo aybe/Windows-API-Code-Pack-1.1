@@ -1,28 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace TestApp
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow
     {
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ButtonTaskDialogFix_Click(object sender, RoutedEventArgs e)
+        {
+            using (var dialog = new TaskDialog
+            {
+                Caption = "Caption",
+                DetailsCollapsedLabel = "DetailsCollapsedLabel",
+                DetailsExpanded = true,
+                DetailsExpandedLabel = "DetailsExpandedLabel",
+                DetailsExpandedText = "DetailsExpandedText",
+                ExpansionMode = TaskDialogExpandedDetailsLocation.ExpandContent,
+                FooterCheckBoxChecked = true,
+                FooterCheckBoxText = "FooterCheckBoxText",
+                FooterIcon = TaskDialogStandardIcon.Information,
+                FooterText = "FooterText",
+                HyperlinksEnabled = true,
+                Icon = TaskDialogStandardIcon.Shield,
+                InstructionText = "InstructionText",
+                ProgressBar = new TaskDialogProgressBar {Value = 100},
+                StandardButtons =
+                    TaskDialogStandardButtons.Ok | TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No |
+                    TaskDialogStandardButtons.Cancel | TaskDialogStandardButtons.Close | TaskDialogStandardButtons.Retry,
+                StartupLocation = TaskDialogStartupLocation.CenterScreen,
+                Text = "Text"
+            })
+            {
+                dialog.Show();
+            }
         }
     }
 }
