@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
             // Get the System.ItemType property
             string itemType = ShellHelper.GetItemType(nativeShellItem2);
 
-            if (!string.IsNullOrEmpty(itemType)) { itemType = itemType.ToUpperInvariant(); }
+            if (!string.IsNullOrEmpty(itemType)) { itemType = itemType.ToLowerInvariant(); }
 
             // Get some IShellItem attributes
             ShellNativeMethods.ShellFileGetAttributesOptions sfgao;
