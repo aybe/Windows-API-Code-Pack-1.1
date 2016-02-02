@@ -882,18 +882,19 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
                 throw new ArgumentNullException("control");
             }
 
-            CommonFileDialogControl dialogControl = null;
+            CommonFileDialogControl dialogControl;
             if (propertyName == "Text")
             {
                 CommonFileDialogTextBox textBox = control as CommonFileDialogTextBox;
+                CommonFileDialogLabel label = control as CommonFileDialogLabel;
 
                 if (textBox != null)
                 {
                     customize.SetEditBoxText(control.Id, textBox.Text);
                 }
-                else
+                else if (label != null)
                 {
-                    customize.SetControlLabel(control.Id, textBox.Text);
+                    customize.SetControlLabel(control.Id, label.Text);
                 }
             }
             else if (propertyName == "Visible" && (dialogControl = control as CommonFileDialogControl) != null)
@@ -912,7 +913,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
 
                 customize.SetControlState(control.Id, state);
             }
-            else if (propertyName == "Enabled" && dialogControl != null)
+            else if (propertyName == "Enabled" && (dialogControl = control as CommonFileDialogControl) != null)
             {
                 ShellNativeMethods.ControlState state;
                 customize.GetControlState(control.Id, out state);
