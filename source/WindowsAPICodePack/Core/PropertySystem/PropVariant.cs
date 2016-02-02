@@ -215,7 +215,7 @@ namespace MS.WindowsAPICodePack.Internal
         // the last 4-bytes of an 8-byte value on 32-bit
         // architectures.
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
-        [FieldOffset(12)]
+        [FieldOffset(16)]
         IntPtr _ptr2;
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
         [FieldOffset(8)]
