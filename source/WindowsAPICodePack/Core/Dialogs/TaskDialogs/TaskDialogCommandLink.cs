@@ -6,7 +6,7 @@ using System.Globalization;
 namespace Microsoft.WindowsAPICodePack.Dialogs
 {
     /// <summary>
-    /// Represents a command-link. 
+    /// Represents a command-link.
     /// </summary>
     public class TaskDialogCommandLink : TaskDialogButton
     {
@@ -52,7 +52,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
         {
             return string.Format(CultureInfo.CurrentCulture, "{0}{1}{2}",
                 Text ?? string.Empty,
-                (!string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(instruction)) ? Environment.NewLine : string.Empty,
+                (!string.IsNullOrEmpty(Text) && !string.IsNullOrEmpty(instruction)) ? "\n" : string.Empty,
                 instruction ?? string.Empty);
         }
     }
