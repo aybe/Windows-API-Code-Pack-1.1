@@ -115,6 +115,7 @@
     <Compile Include="AppRestartRecovery\RecoverySettings.cs" />
     <Compile Include="AppRestartRecovery\RestartRestrictions.cs" />
     <Compile Include="AppRestartRecovery\RestartSettings.cs" />
+    <Compile Include="Dialogs\TaskDialogs\TaskDialogDefaultButton.cs" />
     <Compile Include="Interop\WindowMessage.cs" />
     <Compile Include="PowerManagement\PowerManagerException.cs" />
     <Compile Include="Dialogs\Common\DialogControl.cs" />

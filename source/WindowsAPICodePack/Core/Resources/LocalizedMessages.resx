@@ -321,4 +321,7 @@
   <data name="PropVariantUnsupportedType" xml:space="preserve">
     <value>Cannot be cast to unsupported type.</value>
   </data>
+  <data name="DefaultButtonCannotBeChanged" xml:space="preserve">
+    <value>Default Button cannot be changed while dialog is showing.</value>
+  </data>
 </root>

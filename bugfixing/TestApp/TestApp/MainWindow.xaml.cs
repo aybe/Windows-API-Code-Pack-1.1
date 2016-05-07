@@ -32,6 +32,7 @@ namespace TestApp
                 StandardButtons =
                     TaskDialogStandardButtons.Ok | TaskDialogStandardButtons.Yes | TaskDialogStandardButtons.No |
                     TaskDialogStandardButtons.Cancel | TaskDialogStandardButtons.Close | TaskDialogStandardButtons.Retry,
+				DefaultButton = TaskDialogDefaultButton.Retry,
                 StartupLocation = TaskDialogStartupLocation.CenterScreen,
                 Text = "Text"
             })
