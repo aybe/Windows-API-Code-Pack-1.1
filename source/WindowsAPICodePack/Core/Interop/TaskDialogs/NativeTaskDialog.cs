@@ -89,14 +89,18 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
                 int selectedRadioButtonId;
                 bool checkBoxChecked;
 
-                // Here is the way we use "vanilla" P/Invoke to call TaskDialogIndirect().  
-                HResult hresult = TaskDialogNativeMethods.TaskDialogIndirect(
-                    nativeDialogConfig,
-                    out selectedButtonId,
-                    out selectedRadioButtonId,
-                    out checkBoxChecked);
+				// Here is the way we use "vanilla" P/Invoke to call TaskDialogIndirect().
+				HResult hresult;
+				using (new EnableThemingInScope(true))
+				{
+					hresult = TaskDialogNativeMethods.TaskDialogIndirect(
+						nativeDialogConfig,
+						out selectedButtonId,
+						out selectedRadioButtonId,
+						out checkBoxChecked);
+				}
 
-                if (CoreErrorHelper.Failed(hresult))
+				if (CoreErrorHelper.Failed(hresult))
                 {
                     string msg;
                     switch (hresult)

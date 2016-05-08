@@ -334,7 +334,6 @@
     <Compile Include="Taskbar\UserRemovedJumpListItemsEventArg.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="BasicSignKey.snk" />
     <None Include="Design\ShellThumbnailClassDiagram.cd" />
     <None Include="Design\ShellObjects.cd" />
     <None Include="ExplorerBrowser\ExplorerBrowserDiagram.cd" />
