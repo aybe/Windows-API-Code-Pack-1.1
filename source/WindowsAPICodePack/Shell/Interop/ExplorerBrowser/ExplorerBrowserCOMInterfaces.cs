@@ -98,7 +98,9 @@ namespace Microsoft.WindowsAPICodePack.Controls
         AlwaysNavigate = 0x00000004,
         NoTravelLog = 0x00000008,
         NoWrapperWindow = 0x00000010,
-        HtmlSharepointView = 0x00000020
+        HtmlSharepointView = 0x00000020,
+        NoBorder = 0x00000040,
+        NoPersistViewState = 0x00000080,
     }
 
     internal enum CommDlgBrowserStateChange
