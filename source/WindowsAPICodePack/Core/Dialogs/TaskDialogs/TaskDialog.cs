@@ -1010,7 +1010,7 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
                             break;
                         case "Minimum":
                         case "Maximum":
-                            nativeDialog.UpdateProgressBarRange();
+                            nativeDialog.UpdateProgressBarRange(progressBar.Minimum, progressBar.Maximum);
                             break;
                         default:
                             Debug.Assert(true, "Unknown property being set");
