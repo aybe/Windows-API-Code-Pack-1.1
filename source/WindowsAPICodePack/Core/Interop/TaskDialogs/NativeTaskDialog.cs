@@ -342,14 +342,17 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
             SendMessageHelper(TaskDialogNativeMethods.TaskDialogMessages.SetProgressBarPosition, i, 0);
         }
 
-        internal void UpdateProgressBarRange()
+        internal void UpdateProgressBarRange(int? min = null, int? max = null)
         {
             AssertCurrentlyShowing();
 
+            if (min.HasValue) settings.ProgressBarMinimum = min.Value;
+            if (max.HasValue) settings.ProgressBarMaximum = max.Value;
+
             // Build range LPARAM - note it is in REVERSE intuitive order.
             long range = NativeTaskDialog.MakeLongLParam(
-                settings.ProgressBarMaximum,
-                settings.ProgressBarMinimum);
+            settings.ProgressBarMaximum,
+            settings.ProgressBarMinimum);
 
             SendMessageHelper(TaskDialogNativeMethods.TaskDialogMessages.SetProgressBarRange, 0, range);
         }
