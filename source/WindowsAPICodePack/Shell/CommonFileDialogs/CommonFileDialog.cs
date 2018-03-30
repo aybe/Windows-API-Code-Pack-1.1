@@ -882,46 +882,43 @@ namespace Microsoft.WindowsAPICodePack.Dialogs
                 throw new ArgumentNullException("control");
             }
 
-            CommonFileDialogControl dialogControl = null;
             if (propertyName == "Text")
             {
-                CommonFileDialogTextBox textBox = control as CommonFileDialogTextBox;
-
-                if (textBox != null)
+                if (control is CommonFileDialogTextBox textBox)
                 {
                     customize.SetEditBoxText(control.Id, textBox.Text);
                 }
-                else
+                else if (control is CommonFileDialogControl dialogControl)
                 {
-                    customize.SetControlLabel(control.Id, textBox.Text);
+                    customize.SetControlLabel(control.Id, dialogControl.Text);
                 }
             }
-            else if (propertyName == "Visible" && (dialogControl = control as CommonFileDialogControl) != null)
+            else if (propertyName == "Visible" && control is CommonFileDialogControl visibleControl)
             {
                 ShellNativeMethods.ControlState state;
                 customize.GetControlState(control.Id, out state);
 
-                if (dialogControl.Visible == true)
+                if (visibleControl.Visible == true)
                 {
                     state |= ShellNativeMethods.ControlState.Visible;
                 }
-                else if (dialogControl.Visible == false)
+                else if (visibleControl.Visible == false)
                 {
                     state &= ~ShellNativeMethods.ControlState.Visible;
                 }
 
                 customize.SetControlState(control.Id, state);
             }
-            else if (propertyName == "Enabled" && dialogControl != null)
+            else if (propertyName == "Enabled" && control is CommonFileDialogControl enabledControl)
             {
                 ShellNativeMethods.ControlState state;
                 customize.GetControlState(control.Id, out state);
 
-                if (dialogControl.Enabled == true)
+                if (enabledControl.Enabled == true)
                 {
                     state |= ShellNativeMethods.ControlState.Enable;
                 }
-                else if (dialogControl.Enabled == false)
+                else if (enabledControl.Enabled == false)
                 {
                     state &= ~ShellNativeMethods.ControlState.Enable;
                 }
