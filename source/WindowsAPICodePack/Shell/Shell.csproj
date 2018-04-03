@@ -200,6 +200,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interop\Common\IntPtrExtensions.cs" />
     <Compile Include="Interop\Common\ShellNativeStructs.cs" />
+    <Compile Include="Interop\Common\WindowNativeMethods.cs" />
     <Compile Include="Interop\ShellObjectWatcher\ShellObjectWatcherNativeMethods.cs" />
     <Compile Include="PropertySystem\PropertySystemException.cs" />
     <Compile Include="Interop\StockIcons\StockIconsNativeMethods.cs" />
