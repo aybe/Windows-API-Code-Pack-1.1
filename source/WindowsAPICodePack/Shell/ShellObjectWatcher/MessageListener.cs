@@ -147,6 +147,7 @@ namespace Microsoft.WindowsAPICodePack.Shell
                     }
                     break;
                 case (uint)WindowMessage.Destroy:
+                    _running = false;
                     break;
                 default:
                     MessageListener listener;
