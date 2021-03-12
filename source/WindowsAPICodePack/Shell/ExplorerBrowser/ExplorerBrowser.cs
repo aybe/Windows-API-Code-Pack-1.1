@@ -215,6 +215,12 @@ namespace Microsoft.WindowsAPICodePack.Controls.WindowsForms
         /// </summary>
         public event EventHandler ViewSelectedItemChanged;
 
+        /// <summary>
+        /// Fires when mouse middle button is down on the selected item
+        /// Kai Lu - 2021.03.12
+        /// </summary>
+        public event EventHandler ExpListItemMouseMBDown;
+
         #endregion
 
         #region implementation
@@ -879,6 +885,23 @@ namespace Microsoft.WindowsAPICodePack.Controls.WindowsForms
             {
                 ViewSelectedItemChanged.Invoke(this, EventArgs.Empty);
             }
+        }
+        #endregion
+
+        #region Override WndProc
+        /// <summary>
+        /// Override WndProc
+        /// </summary>
+        /// <param name="m"></param>
+        protected override void WndProc(ref System.Windows.Forms.Message m)
+        {
+            if ((int)m.WParam == (int)WindowMessage.MiddleButtonDown)
+            {
+                if (this.SelectedItems.Count > 0)
+                    ExpListItemMouseMBDown.Invoke(this, EventArgs.Empty);
+            }
+
+            base.WndProc(ref m);
         }
         #endregion
 
