@@ -47,10 +47,11 @@ Namespace Microsoft.WindowsAPICodePack.Samples
 			AddHandler explorerBrowser.ItemsChanged, AddressOf explorerBrowser_ItemsChanged
             AddHandler explorerBrowser.SelectionChanged, AddressOf explorerBrowser_SelectionChanged
             AddHandler explorerBrowser.ViewEnumerationComplete, AddressOf explorerBrowser_ViewEnumerationComplete
+            AddHandler explorerBrowser.ExpListItemMouseMBDown, AddressOf explorerBrowser_ExpListItemMouseMBDown  'Kai Lu - 2021.03.12
 
 
-			' set up Navigation log event and button state
-			AddHandler explorerBrowser.NavigationLog.NavigationLogChanged, AddressOf NavigationLog_NavigationLogChanged
+            ' set up Navigation log event and button state
+            AddHandler explorerBrowser.NavigationLog.NavigationLogChanged, AddressOf NavigationLog_NavigationLogChanged
 			Me.backButton.Enabled = False
             Me.forwardButton.Enabled = False
 
@@ -248,6 +249,10 @@ Namespace Microsoft.WindowsAPICodePack.Samples
 
         Private Sub knownFolderCombo_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles knownFolderCombo.TextChanged
             knownFolderNavigate.Enabled = (knownFolderCombo.Text.Length > 0)
+        End Sub
+
+        Private Sub explorerBrowser_ExpListItemMouseMBDown(sender As Object, e As EventArgs)
+            MsgBox(explorerBrowser.SelectedItems(0).ParsingName)
         End Sub
 
     End Class
